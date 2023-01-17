@@ -69,7 +69,7 @@ const Register = async (req, res) => {
             userData.password = result
 
             loginCollection.insertOne(userData)
-            
+
         })
 
         response.registered = true

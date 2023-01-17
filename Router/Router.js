@@ -1,11 +1,11 @@
 const Router = require('express').Router()
-const controller = require('../Controller/Controller')
+const Auth = require('../Controller/Auth')
+const Data = require('../Controller/Data')
 
-Router.get('/', (req, res) => {
-    res.send('<h1>Hello World</h1>')
-})
 
-Router.post('/Auth/Login', controller.Login)
-Router.post('/Auth/Register', controller.Register)
+Router.post('/Auth/Login', Auth.Login)
+Router.post('/Auth/Register', Auth.Register)
+
+Router.post('/getAllFiles', Data.getAllVideos)
 
 module.exports = Router

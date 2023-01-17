@@ -7,7 +7,9 @@ An application used to streaming Video just like netflix.
 
 # Project Status
 
-This project is currently in development.
+This project is currently in development. And the application already had the login
+system.
+
 
 <hr>
 
@@ -34,7 +36,7 @@ To Start Server:
 
 ## Api
 
-- [ ] Create the auth route
+- [X] Create the auth route
 - [ ] Create a route to serve the public files
 - [ ] Protect the routes of these public files based on user permissions
 
