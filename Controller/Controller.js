@@ -38,8 +38,50 @@ const Login = async (req, res) => {
     }
 }
 
-const Register = (req, res) => {
-    res.send('Register')
+const Register = async (req, res) => {
+
+    let userData = {
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+        perfis: req.body.perfis
+    }
+
+    let response = {
+        registered: false,
+        errors: {
+            usernameExist: false,
+            emailExist: false
+        },
+        token: ""
+    }
+
+    const usernameResult = await loginCollection.findOne({ username: userData.username })
+    const emailResult = await loginCollection.findOne({ email: userData.email})
+
+    if (usernameResult) { response.errors.usernameExist = true }
+    if (emailResult) { response.errors.emailExist = true }
+
+    if (response.errors.usernameExist == false && response.errors.emailExist == false) {
+
+        await bcrypt.hash(userData.password, 10, (error, result) => {
+
+            userData.password = result
+
+            loginCollection.insertOne(userData)
+            
+        })
+
+        response.registered = true
+        response.token = jwt.sign({
+            username: userData.username,
+            email: userData.email
+        }, process.env.Password)
+    }
+
+
+
+    res.send(response)
 }
 
 module.exports = {
