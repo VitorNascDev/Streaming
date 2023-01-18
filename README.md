@@ -8,7 +8,7 @@ An application used to streaming Video just like netflix.
 # Project Status
 
 This project is currently in development. And the application already had the login
-system.
+system.The route to acess the files is working
 
 
 <hr>
@@ -37,7 +37,14 @@ To Start Server:
 ## Api
 
 - [X] Create the auth route
-- [ ] Create a route to serve the public files
-- [ ] Protect the routes of these public files based on user permissions
+- [X] Create a route to serve the public files
+- [X] Protect the routes of these public files based on the user token
+- [ ] Create a system of permission on these files or folders
+
 
 ## Front-End
+
+- [ ] Create a Header
+- [ ] Create a Login Modal
+- [ ] Create a Register Modal
+- [ ] Create a Page To list all the files
