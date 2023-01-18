@@ -4,7 +4,7 @@ const path = require('path')
 const Router = require('./Router/Router')
 const app = express()
 
-app.use(express.static(path.join(__dirname, './Public')))
+app.use('/Public', express.static(path.join(__dirname, './Public')))
 app.use(express.json())
 app.use('/', Router)
 

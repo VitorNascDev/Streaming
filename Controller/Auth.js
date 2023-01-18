@@ -1,8 +1,12 @@
 const { MongoClient } = require('mongodb')
 const database = new MongoClient(process.env.MongoUrl)
 const loginCollection = database.db('Streaming').collection('Login')
+const fs = require('fs')
 const jwt = require('jsonwebtoken')
+const path = require('path')
 const bcrypt = require('bcrypt')
+
+const videoFolder = path.join(__dirname, '../Public/Videos')
 
 const Login = async (req, res) => {
 
@@ -18,8 +22,6 @@ const Login = async (req, res) => {
     if (queryResult) {      // Check if User Exists
 
         bcrypt.compare(userData.password, queryResult.password, (err, result) => {
-            
-            console.log(result)
 
             if (result) {   // Check if is the correct password and send the token
 
@@ -84,7 +86,22 @@ const Register = async (req, res) => {
     res.send(response)
 }
 
+const ProtectTheFiles = (req, res) => {
+
+    const token = req.params.UserToken
+
+    jwt.verify(req.params.UserToken, process.env.Password, (err, decoded) => {          // Verify if the user has a token
+
+        if (err) {                                                                      // If user has the token it will send the file that he wish, else he will receive a acess denied
+            res.send('Acess Denied')
+        } else {
+            res.sendFile(path.join(__dirname, '../', 'Public', 'Videos', String(req.params.data)))
+        }
+    })
+}
+
 module.exports = {
     Login,
-    Register
+    Register,
+    ProtectTheFiles
 }
