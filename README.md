@@ -30,6 +30,9 @@ Installation:
 To Start Server:
 `npm start`
 
+To Start The Front End
+`npm run startFrontEnd`
+
 <hr>
 
 # To Do List
