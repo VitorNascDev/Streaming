@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+    --background: #282a36;
+    --secondary-background: #44475a;
+    --green: #50fa7b;
+    --red: #ff5555;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins',Arial, Helvetica, sans-serif;
+    background-color: var(--background);
+}
+
+/* Header */
+
+#HeaderLogo {
+    color: white;
+    font-size: 20pt;
+}
+
+.HeaderContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    margin: auto;
+    max-width: 1500px;
+    box-shadow: 0 0 12px black;
+}
+
+.ButtonHeaderContainer {
+    display: flex;
+    gap: 10px;
+    padding: 5px 10px;
+}
+
+.ButtonHeaderContainer button {
+    font-size: 12pt;
+    background-color: var(--green);
+    border: 1px solid transparent;
+    color: white;
+    text-shadow: 0 0 2px black;
+    font-weight: 600;
+    transition: border-radius 1s;
+    padding: 8px 15px;
+}
+
+.ButtonHeaderContainer button:hover {
+    cursor: pointer;
+    border-radius: 50px;
+    border-color: white;
+}
+
+/* Reponsive Header */
+
+@media screen and (max-width: 800px) {
+
+    .HeaderContent {
+        padding: 10px 30px;
+    }
+
+    #HeaderLogo {
+        font-size: 16pt;
+    }
+
+    .ButtonHeaderContainer button {
+        font-size: 10pt;
+        padding: 5px 15px;
+    }
+}
