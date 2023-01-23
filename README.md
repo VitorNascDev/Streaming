@@ -43,11 +43,12 @@ To Start The Front End
 - [X] Create a route to serve the public files
 - [X] Protect the routes of these public files based on the user token
 - [ ] Create a system of permission on these files or folders
+- [ ] Create a admin user that can modify the permission of the users on the files
 
 
 ## Front-End
 
-- [ ] Create a Header
+- [X] Create a Header
 - [ ] Create a Login Modal
 - [ ] Create a Register Modal
 - [ ] Create a Page To list all the files
