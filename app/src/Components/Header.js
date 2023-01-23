@@ -1,8 +1,16 @@
 import { useState } from 'react'
 
-export default function Header() {
+export default function Header(props) {
 
     const [logged, setLogged] = useState(false)
+
+    function SignIn() {
+        props.setLoginModal(true)
+    }
+
+    function Register() {
+        props.setRegisterModal(true)
+    }
 
     return (
         <header>
@@ -18,8 +26,8 @@ export default function Header() {
                         </>
                     ) : (
                         <>
-                            <button>Sign In</button>
-                            <button>Register</button>
+                            <button onClick={SignIn}>Sign In</button>
+                            <button onClick={Register}>Register</button>
                         </>
                     )}
                 </div>
