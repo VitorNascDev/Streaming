@@ -8,7 +8,9 @@ An application used to streaming Video just like netflix.
 # Project Status
 
 This project is currently in development. And the application already had the login
-system.The route to acess the files is working
+system.The route to acess the files is working.
+
+The project is currently on the development of the front end.
 
 
 <hr>
