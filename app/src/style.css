@@ -136,6 +136,39 @@ body {
     display: none;
 }
 
+/* Register Perfil Style */
+
+.RegisterPerfilContainer h2 {
+    text-align: center;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.PerfilInputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.RegisterPerfilContainer input {
+    width: 100%;
+}
+
+.RegisterPerfilButtonContainer {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.RegisterPerfilButtonContainer button {
+    width: 100%;
+}
+
+#RemovePerfil {
+    background-color: var(--red);
+}
+
 /* Reponsive Header */
 
 @media screen and (max-width: 800px) {
