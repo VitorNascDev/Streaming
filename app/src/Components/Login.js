@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 
 export default function Login (props) {
 
-    const [username, setUsername] = useState()
-    const [password, setPassword] = useState()
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
 
     function OnChange(e) {
 
@@ -12,11 +12,11 @@ export default function Login (props) {
         }, [])
 
         const changeFunc = {
-            username: () => { setUsername(e.target.value)},
-            password: () => { setPassword(e.target.value)}
+            UsernameLoginInput: () => { setUsername(e.target.value)},
+            PasswordLoginInput: () => { setPassword(e.target.value)}
         }
 
-        console.log(e)
+        changeFunc[e.target.id]()
 
     }
 
@@ -39,8 +39,8 @@ export default function Login (props) {
 
                 <h2>Login</h2>
 
-                <input type="text" id="username" onChange={OnChange} placeholder="Type your username"/>
-                <input type="password" id="password" onChange={OnChange} placeholder="Type your password" />
+                <input type="text" id="username-login-input" onChange={OnChange} placeholder="Type your username"/>
+                <input type="password" id="password-login-input" onChange={OnChange} placeholder="Type your password" />
 
                 <button onClick={loginFunction}>Login</button>
             </form>
