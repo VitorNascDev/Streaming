@@ -7,10 +7,6 @@ export default function Login (props) {
 
     function OnChange(e) {
 
-        useEffect(()=> {
-            console.log(props.loginModal)
-        }, [])
-
         const changeFunc = {
             UsernameLoginInput: () => { setUsername(e.target.value)},
             PasswordLoginInput: () => { setPassword(e.target.value)}
@@ -23,7 +19,19 @@ export default function Login (props) {
     function loginFunction(e) {
         e.preventDefault()
 
-        console.log(`username: ${username}, password: ${password}`)
+        console.log(username)
+
+        fetch ('/Auth/Login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({
+                username, password
+            })
+        })
+        .then(response => response.text())
+        .then(data => console.log(data))
     }
 
     function CloseModal(e) {
@@ -39,8 +47,8 @@ export default function Login (props) {
 
                 <h2>Login</h2>
 
-                <input type="text" id="username-login-input" onChange={OnChange} placeholder="Type your username"/>
-                <input type="password" id="password-login-input" onChange={OnChange} placeholder="Type your password" />
+                <input type="text" id="UsernameLoginInput" onChange={OnChange} placeholder="Type your username"/>
+                <input type="password" id="PasswordLoginInput" onChange={OnChange} placeholder="Type your password" />
 
                 <button onClick={loginFunction}>Login</button>
             </form>

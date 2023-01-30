@@ -25,10 +25,23 @@ export default function Register(props) {
 
     function RegisterFunction(e) {
         e.preventDefault()
-        console.log(`Username: ${username}`)
-        console.log(`Password: ${password}`)
-        console.log(`Email: ${email}`)
-        console.log(Perfis)
+
+        fetch('/Auth/Register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username,
+                password,
+                email,
+                Perfis
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
     }
 
     function AddRemovePerfil(e) {           // The function to add or remove a perfil field
