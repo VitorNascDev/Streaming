@@ -21,7 +21,7 @@ export default function ListFiles() {
         <ul className='VideoItemContainer'>
             {videos.map(video => {
                 return (
-                    <VideoItem data={video}/>
+                    <VideoItem data={video} key={`${video}${Math.floor(Math.random() * 100)}`}/>
                 )
             })}
         </ul>
