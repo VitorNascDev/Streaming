@@ -8,23 +8,34 @@ import {
 import Header from './Components/Header'
 import ListFiles from './Components/ListFiles'
 import Login from './Components/Login'
-import Perfil from './Components/Perfil'
 import Register from './Components/Register'
+import Video from './Components/Video'
 import './style.css'
 
 export default function App() {
 
     const [loginModal, setLoginModal] = useState(false)
     const [registerModal, setRegisterModal] = useState(false)
-    const [token, setToken] = useState('')
+    const [token, setToken] = useState({tokenExist: false, token: ''})
 
     useEffect(() => {
-        console.log('Hello World')
+        // Getting the UserToken in the localstorage if exist
 
-        if (token === '') {
-            console.log('Token does\'t exist')
+        if (token.token === '') {
+            let UserToken = localStorage.getItem('UserToken')
+
+            if (UserToken) {
+                setToken({
+                    tokenExist: true,
+                    token: UserToken
+                })
+            }
         } else {
-            console.log('Setting up the token to the hook')
+            localStorage.getItem('UserToken')
+            setToken({
+                tokenExist: true,
+                token: localStorage.getItem('UserToken')
+            })
         }
     }, [])
 
@@ -37,21 +48,27 @@ export default function App() {
                         setLoginModal={setLoginModal}
                         registerModal={registerModal}
                         setRegisterModal={setRegisterModal}
+                        setToken={setToken}
+                        UserToken={token}
                     />
 
                     <Login 
                         loginModal={loginModal}
                         setLoginModal={setLoginModal}
+                        setToken={setToken}
+                        UserToken={token}
                     />
 
                     <Register 
                         registerModal={registerModal}
                         setRegisterModal={setRegisterModal}
+                        setToken={setToken}
+                        UserToken={token}
                     />
 
                 <Routes>
-                    <Route path="/ListAllVideos" element={ <ListFiles/> }/>
-                    <Route path="/test" element={<Perfil />} />
+                    <Route path="/ListAllVideos" element={ <ListFiles token={token}/> }/>
+                    <Route path="/test/:video" element={<Video />} />
                 </Routes>
             </Router>
             
