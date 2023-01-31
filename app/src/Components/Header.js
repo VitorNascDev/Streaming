@@ -1,8 +1,6 @@
-import { useState } from 'react'
+import { useNavigate } from "react-router-dom"
 
 export default function Header(props) {
-
-    const [logged, setLogged] = useState(false)
 
     function SignIn() {
         props.setLoginModal(true)
@@ -10,6 +8,15 @@ export default function Header(props) {
 
     function Register() {
         props.setRegisterModal(true)
+    }
+
+    function Logout() {
+        props.setToken({
+            tokenExist: false,
+            token: ''
+        })
+
+        localStorage.removeItem('UserToken')
     }
 
     return (
@@ -20,9 +27,9 @@ export default function Header(props) {
 
                 <div className="ButtonHeaderContainer">
 
-                    {logged ? (
+                    {props.UserToken.tokenExist ? (
                         <>
-                            <button>Log Out</button>
+                            <button id="ButtonLogout" onClick={Logout}>Log Out</button>
                         </>
                     ) : (
                         <>
