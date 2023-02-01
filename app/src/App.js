@@ -7,8 +7,8 @@ import {
 
 import Header from './Components/Header'
 import ListFiles from './Components/ListFiles'
-import Login from './Components/Login'
-import Register from './Components/Register'
+import Login from './Components/Modals/Login'
+import Register from './Components/Modals/Register'
 import Video from './Components/Video'
 import './style.css'
 
@@ -68,7 +68,7 @@ export default function App() {
 
                 <Routes>
                     <Route path="/ListAllVideos" element={ <ListFiles token={token}/> }/>
-                    <Route path="/test/:video" element={<Video />} />
+                    <Route path="/test/:video" element={<Video token={token}/>} />
                 </Routes>
             </Router>
             
