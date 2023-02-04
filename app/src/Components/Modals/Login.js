@@ -21,8 +21,6 @@ export default function Login (props) {
     function loginFunction(e) {
         e.preventDefault()
 
-        console.log(username)
-
         fetch ('/Auth/Login', {
             method: 'POST',
             headers: {
@@ -43,7 +41,7 @@ export default function Login (props) {
             props.setLoginModal(false)
             setUsername('')
             setPassword('')
-            navigate('/ListAllVideos')
+            navigate('/Home')
         })
     }
 
