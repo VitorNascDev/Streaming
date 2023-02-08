@@ -53,8 +53,8 @@ To Start The Front End
 - [X] Create a Header
 - [X] Create a Login Modal
 - [X] Create a Register Modal
-- [ ] Create a Page To list all the files
-- [ ] Create the routes
+- [X] Create a Page To list all the files
+- [X] Create the routes
 - [ ] Create a component showing all the perfis of the user
 - [ ] Create a way to show the errors when the user is loggin or registering.
 - [ ] Create a way to show all the categorys
