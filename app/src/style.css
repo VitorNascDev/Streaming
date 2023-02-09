@@ -74,11 +74,12 @@ body {
     grid-template-columns: 1fr 1fr;
     
     gap: 2px;
-    width: 100%;
+    max-width: 500px;
     margin: 30px auto
 }
 
-.VideoItem a {
+.VideoItem {
+    height: 150px;
     background-color: var(--secondary-background);
     display: flex;
     flex-direction: column;
