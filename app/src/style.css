@@ -13,6 +13,8 @@
     border: none;
     outline: none;
     box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
 }
 
 body {
@@ -80,7 +82,6 @@ body {
     background-color: var(--secondary-background);
     display: flex;
     flex-direction: column;
-    text-decoration: none;
     color: white;
 }
 
@@ -238,16 +239,31 @@ body {
 
 /* Perfil Style */
 
+.PerfilListContainer {
+    max-width: 400px;
+    margin: auto;
+    padding: 30px 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
 .PerfilItem {
+    height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    outline: 1px solid white;
+    background-color: var(--secondary-background);
+    color: white;
 }
 
 .PerfilItem img {
-    width: 150px;
+    width: 100px;
 }
 
 /* Reponsive Header */
