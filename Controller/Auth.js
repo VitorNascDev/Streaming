@@ -1,12 +1,10 @@
 const { MongoClient } = require('mongodb')
 const database = new MongoClient(process.env.MongoUrl)
-const loginCollection = database.db('Streaming').collection('Login')
+const loginCollection = database.db('Streaming')
 const fs = require('fs')
 const jwt = require('jsonwebtoken')
 const path = require('path')
 const bcrypt = require('bcrypt')
-
-const videoFolder = path.join(__dirname, '../Public/Videos')
 
 const Login = async (req, res) => {
 
@@ -15,7 +13,7 @@ const Login = async (req, res) => {
         password: req.body.password,
     }
 
-    const queryResult = await loginCollection.findOne({
+    const queryResult = await loginCollection.collection('Login').findOne({
         username: userData.username
     })
 
@@ -42,6 +40,8 @@ const Login = async (req, res) => {
 
 const Register = async (req, res) => {
 
+    // Function used to register a new user
+
     let userData = {
         username: req.body.username,
         email: req.body.email,
@@ -58,8 +58,8 @@ const Register = async (req, res) => {
         token: ""
     }
 
-    const usernameResult = await loginCollection.findOne({ username: userData.username })
-    const emailResult = await loginCollection.findOne({ email: userData.email})
+    const usernameResult = await loginCollection.collection('Login').findOne({ username: userData.username })
+    const emailResult = await loginCollection.collection('Login').findOne({ email: userData.email})
 
     if (usernameResult) { response.errors.usernameExist = true }
     if (emailResult) { response.errors.emailExist = true }
@@ -86,16 +86,28 @@ const Register = async (req, res) => {
     res.send(response)
 }
 
+const getProfiles = (req, res) => {
+    const token = req.headers.usertoken
+
+    if (token) {
+        jwt.verify(token, process.env.Password, async (err, decoded) => {
+            let user = await loginCollection.collection('Login').findOne({ username: decoded.username})
+            
+            res.send(user.perfis)
+        })
+    } 
+}
+
 const ProtectTheFiles = (req, res) => {
 
     const token = req.params.UserToken
 
-    jwt.verify(req.params.UserToken, process.env.Password, (err, decoded) => {          // Verify if the user has a token
+    jwt.verify(token, process.env.Password, (err, decoded) => {                         // Verify if the user has a token
 
         if (err) {                                                                      // If user has the token it will send the file that he wish, else he will receive a acess denied
             res.send('Acess Denied')
         } else {
-            res.sendFile(path.join(__dirname, '../', 'Public', 'Videos', String(req.params.data)))
+            res.sendFile(path.join(process.env.FOLDER, req.params.data))
         }
     })
 }
@@ -103,5 +115,6 @@ const ProtectTheFiles = (req, res) => {
 module.exports = {
     Login,
     Register,
+    getProfiles,
     ProtectTheFiles
 }
