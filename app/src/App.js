@@ -9,6 +9,8 @@ import Header from './Components/Header'
 import ListFiles from './Components/ListFiles'
 import Login from './Components/Modals/Login'
 import Register from './Components/Modals/Register'
+import Perfil from './Components/Perfil'
+import UserPerfil from './Components/Perfil/UserPerfil'
 import Video from './Components/Video'
 import './style.css'
 
@@ -67,14 +69,12 @@ export default function App() {
                     />
 
                 <Routes>
+                    <Route path="/Perfil/:perfil" element={<UserPerfil token={token} />} />
+                    <Route path="/Home" element={ <Perfil token={token} /> }/>
                     <Route path="/ListAllVideos" element={ <ListFiles token={token}/> }/>
                     <Route path="/test/:video" element={<Video token={token}/>} />
                 </Routes>
             </Router>
-            
-
-            
-            
 
         </div>
     )
