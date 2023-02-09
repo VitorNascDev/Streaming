@@ -1,13 +1,12 @@
-import PerfilPhoto from '../../Assets/'
-
-export default function PerfilItem() {
+import PerfilPhoto from '../../Assets/Default Person.png'
+export default function PerfilItem(props) {
     return (
-        <li>
+        <li className="PerfilItem">
             <a href="">
             
                 <img src={PerfilPhoto} />
 
-                <h2>Vitor</h2>
+                <h2>{props.name}</h2>
             
             </a>
         </li>
