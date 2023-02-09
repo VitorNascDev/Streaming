@@ -3,28 +3,18 @@ import VideoItem from './VideoItem'
 
 export default function ListFiles(props) {
 
-    const [videos, setVideo] = useState([])
+    // If the token exist it will rendered all the video links and thumbnails
+    // else it will return a acess denied message
 
-    useEffect(() => {
-        fetch('/getAllFiles', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'UserToken': props.token.token
-            }
-        })
-        .then(response => response.json())
-        .then(data => setVideo(data))
+    
 
-    }, [])
-
-    if (props.token.tokenExist) {
+    if (props.token.tokenExist && props.Videos.length !== 0) {
 
         return (
             <ul className='VideoItemContainer'>
-                {videos.map(video => {
+                {props.Videos.map(video => {
                     return (
-                        <VideoItem token={props.token} data={video} key={`${video}${Math.floor(Math.random() * 100)}`}/>
+                        <VideoItem token={props.token} data={video.Title} key={`${video.Title}${Math.floor(Math.random() * 100)}`}/>
                     )
                 })}
             </ul>
@@ -32,8 +22,8 @@ export default function ListFiles(props) {
     } else {
 
         return (
-            <div>
-                <h1>Acess Denied</h1>
+            <div className="AcessDeniedMessage">
+                <h1>Acess Denied Or the Folder is empty</h1>
             </div>
         )
     }

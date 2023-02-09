@@ -4,7 +4,7 @@ import ListFiles from "../ListFiles"
 
 export default function UserPerfil(props) {
 
-    const [videos, setVideo] = useState({})
+    const [videos, setVideo] = useState([])
     const { perfil } = useParams()
 
     useEffect(() => {
@@ -18,7 +18,10 @@ export default function UserPerfil(props) {
             }
         })
         .then(response => response.json())
-        .then(data => setVideo(data))
+        .then(data => {
+            setVideo([...data])
+            console.log(data)
+        })
 
     }, [])
 
