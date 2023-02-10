@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { 
     BrowserRouter as Router,
     Routes,
-    Route
+    Route,
+    Navigate
 } from 'react-router-dom'
 
 import Header from './Components/Header'
@@ -69,6 +70,15 @@ export default function App() {
                     />
 
                 <Routes>
+                    <Route path="/" element={
+                        token.tokenExist ? (
+                                <Navigate to={'/Home'}/>
+                            ) : (
+                            <h2>User Not Logged</h2>
+                            
+                            )
+                    } />
+
                     <Route path="/Perfil/:perfil" element={<UserPerfil token={token} />} />
                     <Route path="/Home" element={ <Perfil token={token} /> }/>
                     <Route path="/ListAllVideos" element={ <ListFiles token={token}/> }/>
