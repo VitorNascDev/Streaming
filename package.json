@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
-    "startFrontEnd": "npm --prefix app start"
+    "startFrontEnd": "npm --prefix app start",
+    "dev": "concurrently \"npm start\" \"npm run startFrontEnd\""
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,7 @@
     "mongodb": "^4.13.0"
   },
   "devDependencies": {
+    "concurrently": "^7.6.0",
     "nodemon": "^2.0.20"
   }
 }
