@@ -1,12 +1,9 @@
-import { useEffect, useState } from 'react'
 import VideoItem from './VideoItem'
 
 export default function ListFiles(props) {
 
     // If the token exist it will rendered all the video links and thumbnails
     // else it will return a acess denied message
-
-    
 
     if (props.token.tokenExist && props.Videos.length !== 0) {
 
