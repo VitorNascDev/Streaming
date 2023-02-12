@@ -19,5 +19,6 @@ Router.post('/getAllFiles', Data.getAllVideos)     // The route to get a array w
 
 // Category Requests
 Router.post('/getCategoryList', category.getCategoryList)
+Router.post('/getSearchResult/:search', category.getSearchResult)
 
 module.exports = Router
