@@ -18,6 +18,6 @@ Router.get('/video/:UserToken/:data', Auth.ProtectTheFiles)   // The Route to ge
 Router.post('/getAllFiles', Data.getAllVideos)     // The route to get a array with all the files inside de video folder
 
 // Category Requests
-Router.post('/addNewCategory/', category.addNewCategory)
+Router.post('/getCategoryList', category.getCategoryList)
 
 module.exports = Router
