@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom'
 
 import Header from './Components/Header'
-import ListFiles from './Components/ListFiles'
 import Login from './Components/Modals/Login'
 import Register from './Components/Modals/Register'
 import Perfil from './Components/Perfil'
@@ -81,7 +80,6 @@ export default function App() {
 
                     <Route path="/Perfil/:perfil" element={<UserPerfil token={token} />} />
                     <Route path="/Home" element={ <Perfil token={token} /> }/>
-                    <Route path="/ListAllVideos" element={ <ListFiles token={token}/> }/>
                     <Route path="/test/:video" element={<Video token={token}/>} />
                 </Routes>
             </Router>
