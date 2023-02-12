@@ -39,6 +39,20 @@ body {
     box-shadow: 0 0 12px black;
 }
 
+/* Search Barr */
+
+.SearchContainer {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px;
+}
+
+.SearchContainer * {
+    padding: 8px;
+}
+
 #ButtonLogout {
     background-color: var(--red);
 }
@@ -113,6 +127,19 @@ body {
     text-align: left;
     color: white;
     overflow: hidden;
+}
+
+/* Category Style */
+
+.CategorysContainer ul {
+    display: flex;
+    gap: 2px;
+}
+
+.CategorysContainer li {
+    background-color: var(--green);
+    color: white;
+    padding: 5px;
 }
 
 /* Acess Denied message */
