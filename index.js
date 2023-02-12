@@ -2,9 +2,13 @@ require('dotenv').config()
 const express = require('express')
 const path = require('path')
 const Router = require('./Router/Router')
+const UploadFilesToDb = require('./Scripts/UploadFilesToDB')
 const app = express()
 
-app.use('/Public', express.static(path.join(__dirname, './Public')))
+// Initialize Function
+UploadFilesToDb()
+
+app.use('/Public', express.static(path.join(process.env.FOLDER)))
 app.use(express.json())
 app.use('/', Router)
 
