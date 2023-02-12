@@ -10,7 +10,7 @@ An application used to streaming Video just like netflix.
 This project is currently in development. And the application already had the login
 system.The route to acess the files is working.
 
-The project is currently on the development of the front end.
+The project is currently on the development of the front end. And it already working, the user can already login and watch the videos.
 
 
 <hr>
@@ -55,8 +55,8 @@ To Start The Front End
 - [X] Create a Register Modal
 - [X] Create a Page To list all the files
 - [X] Create the routes
-- [ ] Create a component showing all the perfis of the user
+- [X] Create a component showing all the perfis of the user
 - [ ] Create a way to show the errors when the user is loggin or registering.
 - [ ] Create a way to show all the categorys
 - [ ] Create a the midia player
-- [ ] Use a animation when showing the modal
+- [X] Use a animation when showing the modal
